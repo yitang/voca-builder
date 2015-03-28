@@ -4,10 +4,11 @@
 ;;
 ;; Author: Yi Tang <yi.tang.uk@me.com>
 ;; Keywords: English vocabulary 
+;; Created: 28th March 2015
 ;; Package-Requires: ((cl-lib "0.2"))
-;; X-URL: http://github.com/yi-tang/voca-builder
-;; URL: http://github.com/yi-tang/voca-builder
-;; Version: DEV
+;; X-URL: http://github.com/yitang/voca-builder
+;; URL: http://github.com/yitang/voca-builder
+;; Version: 0.0.20150328
 ;;
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by

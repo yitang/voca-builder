@@ -1,4 +1,4 @@
-;;; voca-builder.el --- Group ibuffer's list by VC project, or show VC status
+;;; voca-builder.el --- Helps you build up your vocabulary
 ;;
 ;; Copyright (C) 2011-2014 Steve Purcell
 ;;
@@ -24,15 +24,19 @@
 ;;
 ;;; Commentary:
 ;;
-;; Vocabulary builder in Emacs, it can do Lookup english dictionary for a word, shows the meaning as a poopup manue, save the searched word and meaning into a file as a node in org-mode.;;
+;; voca-builder is an Emacs package that aimed to help you build up your vocabulary by automating the most step in the process, so that you actually spent time in learning new words.
+;; It will do the checking, and shows the meaning as a popup above the text. It also records the meaning and the sentence containing the word.  Finally, it can export vocabularies that have the same tags, or are between two date. 
 ;;; Use:
 ;;
-;; To group buffers by vc parent dir:
+;; To use voca-builder 
+;;   (setq voca-builder/voca-file "~/.vocabulary.org")
+;;   (setq voca-builder/export-file "~/.voca-builder-temp.org")
+;;   (global-set-key (kbd "<f4>") 'voca-builder/search-popup) 
 ;;
-;;   M-x ibuffer-vc-set-filter-groups-by-vc-root
-;;
-;; or, make this the default:
-;;
+;; To export all the vocabulary tagged by TLOTR 
+;;   (voca-builder/extract-by-tags "TLOTR") , get all the vocabularies of The Lord of Rings.
+;; To export all the vocabulary recored between 2015-01-01 and 2015-03-01
+;;   (voca-builder/extract-period "2015-01-01" "2015-03-01")
 ;;
 ;;; Code:
 
@@ -50,26 +54,23 @@
   "If non-nil, record the vocabulary looked-into and save to voca-builder/voca-file."
   :type 'boolean
   :group 'voca-builder)
-(setq voca-builder/record-voca t)
-
 
 (defcustom voca-builder/voca-file "~/.vocabulary.org"
   "the vobulary file"
   :type 'file
   :group 'voca-builder)
-(setq voca-builder/voca-file "~/git/Learning/Emacs_Voca/voca_example.org")
+
 
 (defcustom voca-builder/record-with-ts t
   "if non-nil, record the vocabulary with a timestamp."
   :type 'boolean
   :group 'voca-builder)
-(setq voca-builder/record-with-ts t)
 
-(defcustom voca-builder/ts-format nil
-  "the timestsamp format for the records"
-  :type 'string
-  :group 'voca-builder)
-(setq voca-builder/ts-format "[%Y-%m-%d %a %H:%M]")
+;; (defcustom voca-builder/ts-format nil
+;;   "the timestsamp format for the records"
+;;   :type 'string
+;;   :group 'voca-builder)
+(setq voca-builder/ts-format "[%Y-%m-%d %a %H:%M]") 
 
 (defun voca-builder/record-vocabulary-p ()
   (if voca-builder/record-voca
@@ -77,13 +78,13 @@
     f))
 
 (defcustom voca-builder/popup-record-sentence nil
-  "If non-nil, record the sentence which contain the word we are looking into."
+  "If non-nil, record the sentence which contain the word that was looked up."
   :type 'boolean
   :group 'voca-builder)
 (setq voca-builder/popup-record-sentence t)
 
 (defcustom voca-builder/popup-show-short-meaning nil
-  "if non-nil, shows the short meaning of the vocabulary"
+  "if non-nil, shows the short expnation of the vocabulary"
   :type 'boolean
   :group 'voca-builder)
 (setq voca-builder/popup-short t)
@@ -92,13 +93,12 @@
   "if non-nil, add tags to the vocabulary node in org-mode"
   :type 'string
   :group 'voca-builder)
-(setq voca-builder/current-tag nil)
-(setq voca-builder/temp-file "~/voca-builder-temp.org")
+(setq voca-builder/current-tag "Gene") ;; 
+
 
 
 ;;;; config 
 (setq voca-builder/popup-line-width 40)
-
 
 ;;;; section: html helper function 
 (defun voca-builder/html-find-content-of-tags-by-points (s-tag e-tag)
@@ -114,7 +114,6 @@
 (defun voca-builder/make-url (voca)
   (concat "http://www.vocabulary.com/dictionary/" voca))
 
-
 (defun voca-builder/fetch-meaning (voca)
   (setq url (voca-builder/make-url voca))
   (setq meaning (with-current-buffer
@@ -129,7 +128,6 @@
 		  ))
   meaning 
   )
-
 
 (defun voca-builder/voca-org-entry (voca exp extra)
   (setq ts (if voca-builder/record-with-ts
@@ -173,30 +171,23 @@
   )
 
 
-(global-set-key (kbd "<f5>") 'voca-builder/search-popup)
-
-
-;; (provide 'voca-builder)
-
-;;;; voca-builder.el ends her
-
 
 ;;;; section: export 
 (defun org-write-subtree ()
-  "return current subtree"
+  "append current subtree to the voca-builder/export-file"
   (org-copy-subtree)
   (setq str (with-temp-buffer
 	      (org-paste-subtree)
 	      (buffer-string)))
-  (append-to-file str nil voca-builder/temp-file))
+  (append-to-file str nil voca-builder/export-file))
 
 (defun voca-builder/extract-by-tags (tags)
   (setq res (org-map-entries 'org-write-subtree tags (list voca-builder/voca-file)))
   )
-;; (voca-builder/extract-by-tags "TLOR");; for example, get all the vocabularies of The Lord of Rings.  
 
-;;;;;;; period
+
 (defun org-get-ts-for-subtree ()
+  "search timesamp in the current subtree, for example [2015-03-28 Sat 12:01], and parse it to date"
   (search-forward-regexp "[0-9]+-[0-9]+-[0-9]+")
   (beginning-of-line)
   (forward-char)
@@ -204,7 +195,8 @@
   )
 
 (defun voca-builder/encode-date (date1)
-  "date: YYYY-MM-DD, for exmaple, 2015-12-01"
+  "encode date
+date: YYYY-MM-DD, for exmaple, 2015-12-01"
   (setq date1-s (split-string date1 "-"))
   (encode-time 0 0 0
 	       (string-to-number (nth 2 date1-s))
@@ -218,38 +210,21 @@
   (if (and p1 p2)
       (org-write-subtree)))
 
-(defun voca-builder/extract-by-periods (p1 p2)
-  "period: YYYY-MM-DD, for exmaple, 2015-12-01"
+(defun voca-builder/extract-period (p1 p2)
+  "extract all vocabulary entries that are recorered between period p1 and p2.
+period: YYYY-MM-DD, for exmaple, 2015-12-01"
+  (interactive)
   (setq time1-internal (voca-builder/encode-date p1))
   (setq time2-internal (voca-builder/encode-date p2))
   (org-map-entries 'voca-builder/extract-by-periods-helper nil (list voca-builder/voca-file))
   )
 
+(provide 'voca-builder)
+;;;; voca-builder.el ends her
 
 
-;; (defun voca-builder/extract-by-periods-wrapper (time1 time2)
-;;   (setq time1-internal (voca-builder/encode-date time1))
-;;   (setq time2-internal (voca-builder/encode-date time2))
-;;   (voca-builder/extract-by-periods (time1-internal time2-internal)))
-
-;; (format-time-string "%Y%M" (voca-builder/encode-date "2015-03-27"))
-
-;; (setq time1 (voca-builder/encode-date "2015-03-01"))
-;; (setq time2 (voca-builder/encode-date "2015-03-26"))
-
-;; (voca-builder/extract-by-periods t1 t2)
-
-
-
-
-;; (voca-builder/test "2015-03-01" "2015-03-25")
-
-;; (org-map-entries 'org-get-ts-for-subtree nil '("/home/yitang/.vocabulary.org"))
-
-
-
-;; (search-forward-regexp "[0-9]+-[0-9]+-[0-9]+")
-;; 2015
-;; 2015-12
-;; 2015-12-03 
-
+;;;; section: test
+;; (setq voca-builder/voca-file "~/git/Learning/Emacs_Voca/voca_example.org") 
+;; (setq voca-builder/export-file "~/voca-builder-temp.org") 
+;; (voca-builder/extract-by-tags "Gene");; test for example, get all the vocabularies of The Lord of Rings.
+;; (global-set-key (kbd "<f4>") 'voca-builder/search-popup)

@@ -1,10 +1,10 @@
 * voca-builder 
 
-if you learning a new filed, you know how hazard it is to check a new term or word that you are not familar.  
+If you are learning a foreign language, you know how tedious and time-consuming it is to check a new word that you are not familiar with, it also will break you reading-flow, and therefore decrease your efficient. 
 
-voca-builder provides excellent facilityies for you so that you can fucos on what you are doing, in this case, reading and learning, by remain the process/flow as much as possible.  It shows the meaning of vocabulary on the top of text,  I.e. without leaving, or swtiching between tasks/Tabs.  It makes you efficent, andhave more time in compresensive the text, rather than, it automatelly records the vocabulary, meaning, and the sentence.  the records later on can be extracted based on cateogry or time period. 
+voca-builder provides excellent functionality that will do the lookup for you, and show the meaning above the text that you are reading as a popup. It also records the meaning and the sentence containing the word. All you need to do is press a key. 
 
-
+It can also groups the vocabulary an later on, you can export new vocabularies based on tags or time period.  The main of this packages is to let you focus on your reading and learning. 
 
 * Make your life easier 
 
@@ -37,41 +37,8 @@ while for vocabuary.com, it has more human friendly defition, which are for huma
 : When you are awake and aware of your surroundings, that's consciousness. There are different types of consciousness, including social consciousness, being aware of injustices in society.
 
 : The early Latin word conscius meant "with knowing," but it meant a shared knowledge, a meaning that was retained through the 16th Century. John Locke was the first to describe consciousness in relation to the individual, referring to it as “the perception of what passes in a man’s own mind." If you lose consciousness during the performance, we'll wake you up with some smelling salts!
-
-
-* DONE fix: word-wrap in popup-tip
-CLOSED: [2015-03-26 Thu 09:42]
-
-* DONE add: timestamp
-CLOSED: [2015-03-26 Thu 09:43]
-* DONE add tags - TLOR (for The Lord of Rings)
-CLOSED: [2015-03-26 Thu 11:45]
-* DONE search for tag
-CLOSED: [2015-03-27 Fri 14:00]
-scope: '(".vocabulary.org")
-
-
-(defun org-identity ()
-(org-copy-subtree)
-(org-paste-subtree))
-
-(length (org-map-entries 'test "/+TODO" 'file))
-
-search for tags:  
-work: select headline tagged :work: 
-work|laptop: select headline tagged :work: or :laptop: 
-+work-home: select headline tagged :work:, but not :home:
-
-
-(setq all-tags "LOTR")
-(org-map-entries 'org-identity all-tags '(".vocabulary.org"))
-
-
-
-
-* DONE search for period
-CLOSED: [2015-03-27 Fri 14:00]
-* TODO random quotes
+* TODO 
+Currently voca-builder only supports English dictionary (www.vocabulary.com) and will add other languages later. 
 
 
 

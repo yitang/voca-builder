@@ -1,24 +1,79 @@
-* Emacs-Voca
-take conciousness for example, definition from oxford is [MASS NOUN] The state of being aware of and responsive to one’s surroundings:
+* voca-builder 
+
+if you learning a new filed, you know how hazard it is to check a new term or word that you are not familar.  
+
+voca-builder provides excellent facilityies for you so that you can fucos on what you are doing, in this case, reading and learning, by remain the process/flow as much as possible.  It shows the meaning of vocabulary on the top of text,  I.e. without leaving, or swtiching between tasks/Tabs.  It makes you efficent, andhave more time in compresensive the text, rather than, it automatelly records the vocabulary, meaning, and the sentence.  the records later on can be extracted based on cateogry or time period. 
+
+
+
+* Make your life easier 
+
+Image the process you want to look in a new word, it probably would like this: 
+1. put down the book you reading,
+2. find the dictionary or open the app, 
+3. repeat step 1-2 few times if the vocabulary is quit complex, 
+4. now you get the meaning, trying to comprehensive it,
+5. then you write it down in a note book, with the meaning,
+6. if you are very serious, you probably write down the sentence as an example,
+7. after all these, you go back to continue reading but lost the flow. 
+
+what if you can do the step 1-6 automatically, and immediately as you thought you wanna see what's the meaning of a word?  This is what voca-bulder can do for you, all you need to do is press F5 (the default setting), without leaving Emacs, searching and recording. Sounds pretty cool is it? 
+
+Even more important, you can quary your vocbaulary database, and search, for example, if you are prepare an interview in banking sector, you can bring up all the banking related terminology, and study them all together,  or you wanna strength your memmoery and wants to remmeber again before you forget, you can bring up all the words you learnt last week, or this month etc. 
+* You need to change 
+The costs of having this massive conviennet packages is that you have to read in Emacs, and it won't be a problem at all. there are quick a few other pakcages you may find particalrly helpful: 
+1. for online articles, emacs has built-in package =eww=, or =w3m=.
+2. for epub, try [[http://www.emacswiki.org/emacs/epubmode.el][epubmodel.el]]
+3. for PDF, try [[https://github.com/politza/pdf-tools][pdf-tools]]
+4. for documentation, try info. 
+
+* Human-Friendly Dictionary Database 
+take conciousness for example, definition from oxford is 
+
+: [MASS NOUN] The state of being aware of and responsive to one’s surroundings:
 
 while for vocabuary.com, it has more human friendly defition, which are for human, and edited by humans. 
 
-consciousness
+: When you are awake and aware of your surroundings, that's consciousness. There are different types of consciousness, including social consciousness, being aware of injustices in society.
 
-When you are awake and aware of your surroundings, that's consciousness. There are different types of consciousness, including social consciousness, being aware of injustices in society.
+: The early Latin word conscius meant "with knowing," but it meant a shared knowledge, a meaning that was retained through the 16th Century. John Locke was the first to describe consciousness in relation to the individual, referring to it as “the perception of what passes in a man’s own mind." If you lose consciousness during the performance, we'll wake you up with some smelling salts!
 
-The early Latin word conscius meant "with knowing," but it meant a shared knowledge, a meaning that was retained through the 16th Century. John Locke was the first to describe consciousness in relation to the individual, referring to it as “the perception of what passes in a man’s own mind." If you lose consciousness during the performance, we'll wake you up with some smelling salts!
-* Usage 
 
-show defiintion in echo area, 
+* DONE fix: word-wrap in popup-tip
+CLOSED: [2015-03-26 Thu 09:42]
 
-in reading, it is much more conviencent to show it above the text, using pop-up.  
+* DONE add: timestamp
+CLOSED: [2015-03-26 Thu 09:43]
+* DONE add tags - TLOR (for The Lord of Rings)
+CLOSED: [2015-03-26 Thu 11:45]
+* DONE search for tag
+CLOSED: [2015-03-27 Fri 14:00]
+scope: '(".vocabulary.org")
 
-for the above two approches, one may wants to records what's the vocabulary has been looked-in and study them later, so 
 
-=(setq my/vocabulary-file "~/vocabulary.org")=
+(defun org-identity ()
+(org-copy-subtree)
+(org-paste-subtree))
 
-=(setq my/record- xxx=
+(length (org-map-entries 'test "/+TODO" 'file))
+
+search for tags:  
+work: select headline tagged :work: 
+work|laptop: select headline tagged :work: or :laptop: 
++work-home: select headline tagged :work:, but not :home:
+
+
+(setq all-tags "LOTR")
+(org-map-entries 'org-identity all-tags '(".vocabulary.org"))
+
+
+
+
+* DONE search for period
+CLOSED: [2015-03-27 Fri 14:00]
+* TODO random quotes
+
+
 
 
 

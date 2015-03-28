@@ -117,5 +117,10 @@ ref:
 [[https://github.com/purcell/ibuffer-vc/blob/master/ibuffer-vc.el][Purcell's ibuffer-vc package]]
 
 [[https://github.com/abo-abo/org-download/blob/master/org-download.el][abo-abo's org-download package]]
+* [2015-03-25 Wed 10:08] change name-style 
 
 
+
+package-name: voca-builder 
+* 2015-03-26 Thursday Updates README
+* [2015-03-27 Fri 13:59] quary for periods and tags 

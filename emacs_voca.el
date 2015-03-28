@@ -57,6 +57,7 @@
   "the vobulary file"
   :type 'file
   :group 'voca-builder)
+(setq voca-builder/voca-file "~/git/Learning/Emacs_Voca/voca_example.org")
 
 (defcustom voca-builder/record-with-ts t
   "if non-nil, record the vocabulary with a timestamp."
@@ -92,6 +93,8 @@
   :type 'string
   :group 'voca-builder)
 (setq voca-builder/current-tag nil)
+(setq voca-builder/temp-file "~/voca-builder-temp.org")
+
 
 ;;;; config 
 (setq voca-builder/popup-line-width 40)
@@ -120,7 +123,9 @@
 		  (setq short-exp (buffer-substring (car pts) (cdr pts)))
 		  (setq pts (voca-builder/html-find-content-of-tags-by-points "<p class=\"long\">" "</p>"))
 		  (setq long-exp (buffer-substring (car pts) (cdr pts)))
-		  (cons short-exp long-exp)
+		  (cons (decode-coding-string short-exp 'utf-8)
+			(decode-coding-string long-exp 'utf-8))
+		  
 		  ))
   meaning 
   )
@@ -171,18 +176,12 @@
 (global-set-key (kbd "<f5>") 'voca-builder/search-popup)
 
 
-(provide 'voca-builder)
+;; (provide 'voca-builder)
 
 ;;;; voca-builder.el ends her
 
 
-
-
-
-
-
-
-
+;;;; section: export 
 (defun org-write-subtree ()
   "return current subtree"
   (org-copy-subtree)
@@ -190,13 +189,11 @@
 	      (org-paste-subtree)
 	      (buffer-string)))
   (append-to-file str nil voca-builder/temp-file))
-(setq voca-builder/temp-file "~/voca-builder-temp.org")
+
 (defun voca-builder/extract-by-tags (tags)
-  (setq res (org-map-entries 'org-write-subtree tags '("/home/yitang/.vocabulary.org")))
+  (setq res (org-map-entries 'org-write-subtree tags (list voca-builder/voca-file)))
   )
-(voca-builder/extract-by-tags "TLOR")
-
-
+;; (voca-builder/extract-by-tags "TLOR");; for example, get all the vocabularies of The Lord of Rings.  
 
 ;;;;;;; period
 (defun org-get-ts-for-subtree ()
@@ -225,8 +222,9 @@
   "period: YYYY-MM-DD, for exmaple, 2015-12-01"
   (setq time1-internal (voca-builder/encode-date p1))
   (setq time2-internal (voca-builder/encode-date p2))
-  (org-map-entries 'voca-builder/extract-by-periods-helper nil '("/home/yitang/.vocabulary.org"))
+  (org-map-entries 'voca-builder/extract-by-periods-helper nil (list voca-builder/voca-file))
   )
+
 
 
 ;; (defun voca-builder/extract-by-periods-wrapper (time1 time2)
@@ -254,3 +252,4 @@
 ;; 2015
 ;; 2015-12
 ;; 2015-12-03 
+

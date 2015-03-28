@@ -1,0 +1,24 @@
+* Emacs-Voca
+take conciousness for example, definition from oxford is [MASS NOUN] The state of being aware of and responsive to one’s surroundings:
+
+while for vocabuary.com, it has more human friendly defition, which are for human, and edited by humans. 
+
+consciousness
+
+When you are awake and aware of your surroundings, that's consciousness. There are different types of consciousness, including social consciousness, being aware of injustices in society.
+
+The early Latin word conscius meant "with knowing," but it meant a shared knowledge, a meaning that was retained through the 16th Century. John Locke was the first to describe consciousness in relation to the individual, referring to it as “the perception of what passes in a man’s own mind." If you lose consciousness during the performance, we'll wake you up with some smelling salts!
+* Usage 
+
+show defiintion in echo area, 
+
+in reading, it is much more conviencent to show it above the text, using pop-up.  
+
+for the above two approches, one may wants to records what's the vocabulary has been looked-in and study them later, so 
+
+=(setq my/vocabulary-file "~/vocabulary.org")=
+
+=(setq my/record- xxx=
+
+
+

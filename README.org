@@ -12,6 +12,7 @@ For full documentation on this package, please see the wiki page.
 * Demo
 
 #+begin_src emacs-lisp
+(require 'voca-builder)
 (setq voca-builder/voca-file "~/git/Learning/Emacs_Voca/voca_example.org") 
 (setq voca-builder/current-tag "Demo")
 (global-set-key (kbd "<f4>") 'voca-builder/search-popup)

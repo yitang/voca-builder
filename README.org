@@ -23,6 +23,9 @@ Image the process you want to look in a new word, it probably would like this:
 What if you can do the step 1-6 automatically, and immediately as you thought you wanna see what's the meaning of a word?  This is what voca-bulder can do for you, all you need to do is press F5 (the default setting), without leaving Emacs, searching and recording. Sounds pretty cool is it? 
 
 Even more important, you can quary your vocbaulary database, and search, for example, if you are prepare an interview in banking sector, you can bring up all the banking related terminology, and study them all together,  or you wanna strength your memmoery and wants to remmeber again before you forget, you can bring up all the words you learnt last week, or this month etc. 
+* Demo 
+[[img/Poup-show-.png]]
+
 * You need to change 
 The costs of having this massive conviennet packages is that you have to read in Emacs, and it won't be a problem at all. there are quick a few other pakcages you may find particalrly helpful: 
 1. for online articles, emacs has built-in package =eww=, or =w3m=.
@@ -41,7 +44,8 @@ while for vocabuary.com, it has more human friendly defition, which are for huma
 
 : The early Latin word conscius meant "with knowing," but it meant a shared knowledge, a meaning that was retained through the 16th Century. John Locke was the first to describe consciousness in relation to the individual, referring to it as “the perception of what passes in a man’s own mind." If you lose consciousness during the performance, we'll wake you up with some smelling salts!
 * TODO TODO 
-Currently voca-builder only supports English dictionary (www.vocabulary.com) and will add other languages later. 
+1. Currently voca-builder only supports English dictionary (www.vocabulary.com) and will add other languages later.
+2. Write Documentation 
 
 
 

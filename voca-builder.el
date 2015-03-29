@@ -5,9 +5,8 @@
 ;; Author: Yi Tang <yi.tang.uk@me.com>
 ;; Keywords: English vocabulary 
 ;; Created: 28th March 2015
-;; Package-Requires: (org popup)
-;; X-URL: http://github.com/yitang/voca-builder
-;; URL: http://github.com/yitang/voca-builder
+;; Package-Requires: ((popup "0.5.2"))
+;; URL: https://github.com/yitang/voca-builder
 ;; Version: 0.0.20150329
 ;;
 ;; This program is free software; you can redistribute it and/or modify

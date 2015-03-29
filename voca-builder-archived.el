@@ -1,11 +1,11 @@
 ;;; voca-builder.el --- Helps you build up your vocabulary
 ;;
-;; Copyright (C) 2011-2014 Steve Purcell
+;; Copyright (C) 2011-2014 Yi Tang
 ;;
 ;; Author: Yi Tang <yi.tang.uk@me.com>
 ;; Keywords: English vocabulary 
 ;; Created: 28th March 2015
-;; Package-Requires: (org popup)
+;; Package-Requires: ((popup "0.5.2"))
 ;; X-URL: http://github.com/yitang/voca-builder
 ;; URL: http://github.com/yitang/voca-builder
 ;; Version: 0.0.20150328
@@ -25,9 +25,15 @@
 ;;
 ;;; Commentary:
 ;;
-;; voca-builder is an Emacs package that aimed to help you build up your vocabulary by automating the most step in the process, so that you actually spent time in learning new words.
-;; It will do the checking, and shows the meaning as a popup above the text. It also records the meaning and the sentence containing the word.  Finally, it can export vocabularies that have the same tags, or are between two date. 
-;;; Use:
+;; voca-builder is an Emacs package that aimed to help you build up your
+;; vocabulary by automating the most step in the process, so that you
+;; actually spent time in learning new words.
+;; It will do the checking, and shows the meaning as a popup above the
+;; text. It also records the meaning and the sentence containing the word.
+;; Finally, it can export vocabularies that have the same tags, or are
+;; between two dates.
+;;
+;;; Usage:
 ;;
 ;; To use voca-builder 
 ;;   (setq voca-builder/voca-file "~/.vocabulary.org")
@@ -221,12 +227,12 @@ period: YYYY-MM-DD, for exmaple, 2015-12-01"
   )
 
 (provide 'voca-builder)
-;;;; voca-builder.el ends her
-
 
 ;;;; section: test
 ;; (setq voca-builder/voca-file "~/git/Learning/Emacs_Voca/voca_example.org") 
 ;; (setq voca-builder/export-file "~/voca-builder-temp.org") 
 ;; (voca-builder/extract-by-tags "Gene");; test for example, get all the vocabularies of The Lord of Rings.
 ;; (global-set-key (kbd "<f4>") 'voca-builder/search-popup)
+
+;;; voca-builder.el ends here
 

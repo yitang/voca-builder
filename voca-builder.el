@@ -229,3 +229,4 @@ period: YYYY-MM-DD, for exmaple, 2015-12-01"
 ;; (setq voca-builder/export-file "~/voca-builder-temp.org") 
 ;; (voca-builder/extract-by-tags "Gene");; test for example, get all the vocabularies of The Lord of Rings.
 ;; (global-set-key (kbd "<f4>") 'voca-builder/search-popup)
+

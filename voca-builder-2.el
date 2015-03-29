@@ -103,7 +103,7 @@ if begining is non-nil, return the point at the begining of the tag, instead of 
 	 (point))))
 
 (defun voca-builder/html-remove-emphasis-tags (a-string)
-  "remove html tags beofre display in emacs"
+  "remove emphasis tags"
   (with-temp-buffer
     (insert a-string)
     (goto-char (point-min))
@@ -125,7 +125,7 @@ if begining is non-nil, return the point at the begining of the tag, instead of 
 
 
 (defun voca-builder/fetch-meaning (voca)
-  ;; "Parse the html content from www.vocabulary.com, and return the short and long meaning "
+  "Parse the html content from www.vocabulary.com, and return the short and long meaning "
   (interactive)
   (with-current-buffer
       (url-retrieve-synchronously (voca-builder/make-url voca))
@@ -138,14 +138,15 @@ if begining is non-nil, return the point at the begining of the tag, instead of 
   )
 
 (defun voca-builder/voca-org-entry (voca exp extra)
+  "create a org-mode sub-tree for the new vocabulary, with timetsamp and tags"
   (let ((ts (if voca-builder/record-with-ts
-		;; (format-time-string voca-builder/ts-format)))
 		(format-time-string "[%Y-%m-%d %a %H:%M]")))
 	(tag (if voca-builder/current-tag
 		 (concat ":" voca-builder/current-tag ":"))))
     (concat "\n* " voca " " tag "\n" ts "\n\n" exp "\n\n" extra)))
 
 (defun voca-builder/record-voca (voca meaning extra)
+  "save the vocabulary notes to file."
   (cond (voca-builder/record-new-vocabulary
 	 (let* ((string-meaning (concat
 				 (car meaning)
@@ -158,6 +159,7 @@ if begining is non-nil, return the point at the begining of the tag, instead of 
 
 
 (defun voca-builder/search-popup ()
+  "search the word and shows the meaning in popup menu, may also save the notes"
   (interactive)
   (let* ((this-voca (thing-at-point 'word))
 	 (this-sentence (if voca-builder/popup-record-sentence
@@ -188,8 +190,8 @@ if begining is non-nil, return the point at the begining of the tag, instead of 
   )
 
 (defun voca-builder/extract-by-tags (tags)
-  (interactive)
   "export all vocabulary records with tags"
+  (interactive)
   (org-map-entries 'org-write-subtree tags (list voca-builder/voca-file))
   )
 
@@ -214,6 +216,7 @@ date: YYYY-MM-DD, for exmaple, 2015-12-01"
   )
 
 (defun voca-builder/extract-by-periods-helper ()
+  "it is created for FUN in org-map-entries does not take arguments"
   (let* ((ts-sub-tree (org-get-ts-for-subtree))
 	 (p1 (time-less-p ts-sub-tree time2-internal))
 	 (p2 (time-less-p time1-internal ts-sub-tree)))
@@ -221,7 +224,6 @@ date: YYYY-MM-DD, for exmaple, 2015-12-01"
 	(org-write-subtree))
     )
   )
-
 
 (defun voca-builder/extract-period (p1 p2)
   "extract all vocabulary entries that are recorered between period p1 and p2.

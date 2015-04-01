@@ -251,13 +251,12 @@ period: YYYY-MM-DD, for exmaple, 2015-12-01"
 (provide 'voca-builder)
 
 ;;;; section: test 
-;; (setq voca-builder/voca-file "~/git/Learning/Emacs_Voca/voca_example.org") 
+;; (setq voca-builder/voca-file "~/vocabulary.org")
 ;; (setq voca-builder/current-tag "Demo")
 ;; (global-set-key (kbd "<f4>") 'voca-builder/search-popup)
 
 ;; (setq voca-builder/export-file "~/voca-builder-temp.org") 
 ;; (voca-builder/extract-by-tags "Demo") 
 ;; (voca-builder/extract-period "2015-01-05" "2015-04-01")
-
 
 ;;; voca-builder.el ends here

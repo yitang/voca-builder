@@ -100,14 +100,17 @@ The timestamps are needed for export function"
   (concat "http://www.vocabulary.com/dictionary/" voca))
 
 (defun voca-builder/html-find-tag (tag &optional begining)
-  "search for a html tag and return the point, 
+  "search for a html tag and return the point, if search filed, return the end of buffer point.
 if begining is non-nil, return the point at the begining of the tag, instead of at the end"
-  (search-forward tag)
-  (cond (begining
-	 (- (point) (length tag)))
-	(t 
-	 (point))))
+    (cond ((search-forward tag nil t)
+	 (if begining
+	     (- (point) (length tag))
+	   (point)))
+	(t
+	 ;;       (message "nothing found")
+	 (point-max))))
 
+    
 (defun voca-builder/html-remove-emphasis-tags (a-string)
   "remove emphasis tags"
   (with-temp-buffer

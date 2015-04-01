@@ -134,12 +134,17 @@ if begining is non-nil, return the point at the begining of the tag, instead of 
 
 
 (defun voca-builder/fetch-meaning (voca)
-  "Parse the html content from www.vocabulary.com, and return the short and long meaning "
+  "Parse the html content from www.vocabulary.com, and return the short and long meaning."
   (interactive)
   (with-current-buffer
       (url-retrieve-synchronously (voca-builder/make-url voca))
-    (let ((short-meaning (voca-builder/html-find-content-of-tags "<p class=\"short\">"
+    (let* ((short-meaning (voca-builder/html-find-content-of-tags "<p class=\"short\">"
 								 "</p>"))
+	   (short-meaning (if (eq 0 (length short-meaning)) ;; if it has no short or long meaning. 
+			      (voca-builder/html-find-content-of-tags "<meta name=\"description\" content =\""
+								      "\" />")
+			    short-meaning))
+	   
 	  (long-meaning (voca-builder/html-find-content-of-tags "<p class=\"long\">"
 								"</p>")))
       (cons short-meaning

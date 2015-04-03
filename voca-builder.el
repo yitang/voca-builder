@@ -193,6 +193,24 @@ if begining is non-nil, return the point at the begining of the tag, instead of 
     )
   )
 
+(defun voca-builder/search (this-voca)
+  "search the word and shows the meaning in echo area, may also save the notes.
+Back up function for voca-builder/search-popup."
+  (interactive "sSearch for word: ")
+  (let* ((this-sentence nil)
+	 (meaning (voca-builder/fetch-meaning this-voca)))
+    (if voca-builder/record-new-vocabulary
+	(voca-builder/record-voca this-voca
+				  meaning
+				  this-sentence))
+    (if voca-builder/popup-show-short-meaning
+	(message "%s" (car meaning))
+      (message "%s" (mapconcat 'identity
+			    meaning
+			    "\n"))
+      )
+    ))
+
 ;;;; section: export 
 (defun org-write-subtree ()
   "append current subtree to the voca-builder/export-file"

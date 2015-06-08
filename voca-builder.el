@@ -7,7 +7,7 @@
 ;; Created: 28th March 2015
 ;; Package-Requires: ((popup "0.5.2"))
 ;; URL: https://github.com/yitang/voca-builder
-;; Version: 0.0.20150401
+;; Version: 0.1.0
 ;;
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by

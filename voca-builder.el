@@ -139,17 +139,18 @@ if begining is non-nil, return the point at the begining of the tag, instead of 
   (with-current-buffer
       (url-retrieve-synchronously (voca-builder/make-url voca))
     (let* ((short-meaning (voca-builder/html-find-content-of-tags "<p class=\"short\">"
-								 "</p>"))
+								  "</p>"))
 	   (short-meaning (if (eq 0 (length short-meaning)) ;; if it has no short or long meaning. 
 			      (voca-builder/html-find-content-of-tags "<meta name=\"description\" content =\""
 								      "\" />")
-			    short-meaning))
-	   
-	  (long-meaning (voca-builder/html-find-content-of-tags "<p class=\"long\">"
-								"</p>")))
-      (cons short-meaning
-	    long-meaning)))
-  )
+			    short-meaning))	   
+	   (long-meaning (voca-builder/html-find-content-of-tags "<p class=\"long\">"
+								 "</p>")))
+      (if (string-match-p "Try the world&#039;s fastest, smartest dictionary:" short-meaning)
+	  (cons "No meaning found"
+		"No meaning found")
+	(cons short-meaning
+	      long-meaning)))))
 
 (defun voca-builder/voca-org-entry (voca exp extra)
   "create a org-mode sub-tree for the new vocabulary, with timetsamp and tags"
@@ -161,16 +162,15 @@ if begining is non-nil, return the point at the begining of the tag, instead of 
 
 (defun voca-builder/record-voca (voca meaning extra)
   "save the vocabulary notes to file."
-  (cond (voca-builder/record-new-vocabulary
+  (unless (string= "No meaning found" (car meaning))
+    (cond (voca-builder/record-new-vocabulary
 	 (let* ((string-meaning (concat
 				 (car meaning)
 				 "\n\n"
 				 (cdr meaning)))
 		(org-entry (voca-builder/voca-org-entry voca string-meaning extra)))
 	   (append-to-file org-entry nil voca-builder/voca-file))
-	 )
-	))
-
+	 ))))
 
 (defun voca-builder/search-popup ()
   "search the word and shows the meaning in popup menu, may also save the notes"

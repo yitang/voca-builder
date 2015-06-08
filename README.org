@@ -43,16 +43,18 @@ Image the process you want to look in a new word, it probably would like this:
 6. if you are very serious, you probably write down the sentence as an example,
 7. after all these, you go back to continue reading but lost the flow. 
 
-What if you can do the step 1-6 automatically, and immediately as you thought you wanna see what's the meaning of a word?  This is what voca-bulder can do for you, all you need to do is press F4 (the default setting), without leaving Emacs, searching and recording. Sounds pretty cool is it? 
+What if you can do the step 1-6 automatically, and immediately as you
+thought you wanna see what's the meaning of a word? This is what
+voca-bulder can do for you, all you need to do is press F4 (the
+default setting), without leaving Emacs, searching and recording.
+Sounds pretty cool is it?
 
-Even more important, you can quary your vocbaulary database, and search, for example, if you are prepare an interview in banking sector, you can bring up all the banking related terminology, and study them all together,  or you wanna strength your memmoery and wants to remmeber again before you forget, you can bring up all the words you learnt last week, or this month etc. 
-* You need to change 
-The costs of having this massive conviennet packages is that you have to read in Emacs, and it won't be a problem at all. there are quick a few other pakcages you may find particalrly helpful: 
-1. for online articles, emacs has built-in package =eww=, or =w3m=.
-2. for epub, try [[http://www.emacswiki.org/emacs/epubmode.el][epubmodel.el]]
-3. for PDF, try [[https://github.com/politza/pdf-tools][pdf-tools]]
-4. for documentation, try info. 
-
+Even more important, you can quary your vocbaulary database, and
+search, for example, if you are prepare an interview in banking
+sector, you can bring up all the banking related terminology, and
+study them all together, or you wanna strength your memmoery and wants
+to remmeber again before you forget, you can bring up all the words
+you learnt last week, or this month etc.
 * Human-Friendly Dictionary Database 
 take conciousness for example, definition from oxford is 
 

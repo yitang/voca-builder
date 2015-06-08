@@ -1,0 +1,18 @@
+* voca-builder 0.1.0 
+[2015-06-08 Mon 19:49]
+** Major changes
+[2015-06-08 Mon 19:54]
+
+For a word that has no meaning in the database,
+=voca-builder/fetch-meaning= returns ='("No meaning found", "No
+meaning found")= and =voca-builder/record-voca= won't update the
+vocabulary file. 
+
+** Minor changes 
+[2015-06-08 Mon 19:56]
+
+1. Namespace: =org-write-subtree= and =org-get-ts-for-subtree= become 
+=voca-builder/org-write-subtree= and =voca-builder/org-get-ts-for-subtree=
+2. Style: Place all trailing parentheses on a single line instead of distinct
+   lines,  https://github.com/bbatsov/emacs-lisp-style-guide
+3. change version number to 0.1.0

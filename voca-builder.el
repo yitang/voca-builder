@@ -102,7 +102,7 @@ The timestamps are needed for export function"
 (defun voca-builder/html-find-tag (tag &optional begining)
   "search for a html tag and return the point, if search filed, return the end of buffer point.
 if begining is non-nil, return the point at the begining of the tag, instead of at the end"
-    (cond ((search-forward tag nil t)
+  (cond ((search-forward tag nil t)
 	 (if begining
 	     (- (point) (length tag))
 	   (point)))
@@ -110,7 +110,7 @@ if begining is non-nil, return the point at the begining of the tag, instead of 
 	 ;;       (message "nothing found")
 	 (point-max))))
 
-    
+
 (defun voca-builder/html-remove-emphasis-tags (a-string)
   "remove emphasis tags"
   (with-temp-buffer
@@ -164,13 +164,13 @@ if begining is non-nil, return the point at the begining of the tag, instead of 
   "save the vocabulary notes to file."
   (unless (string= "No meaning found" (car meaning))
     (cond (voca-builder/record-new-vocabulary
-	 (let* ((string-meaning (concat
-				 (car meaning)
-				 "\n\n"
-				 (cdr meaning)))
-		(org-entry (voca-builder/voca-org-entry voca string-meaning extra)))
-	   (append-to-file org-entry nil voca-builder/voca-file))
-	 ))))
+	   (let* ((string-meaning (concat
+				   (car meaning)
+				   "\n\n"
+				   (cdr meaning)))
+		  (org-entry (voca-builder/voca-org-entry voca string-meaning extra)))
+	     (append-to-file org-entry nil voca-builder/voca-file))
+	   ))))
 
 (defun voca-builder/search-popup ()
   "search the word and shows the meaning in popup menu, may also save the notes"
@@ -206,13 +206,13 @@ Back up function for voca-builder/search-popup."
     (if voca-builder/popup-show-short-meaning
 	(message "%s" (car meaning))
       (message "%s" (mapconcat 'identity
-			    meaning
-			    "\n"))
+			       meaning
+			       "\n"))
       )
     ))
 
 ;;;; section: export 
-(defun org-write-subtree ()
+(defun voca-builder/org-write-subtree ()
   "append current subtree to the voca-builder/export-file"
   (org-copy-subtree)
   (let ((str (with-temp-buffer
@@ -224,10 +224,10 @@ Back up function for voca-builder/search-popup."
 (defun voca-builder/extract-by-tags (tags)
   "export all vocabulary records with tags"
   (interactive)
-  (org-map-entries 'org-write-subtree tags (list voca-builder/voca-file))
+  (org-map-entries 'voca-builder/org-write-subtree tags (list voca-builder/voca-file))
   )
 
-(defun org-get-ts-for-subtree ()
+(defun voca-builder/org-get-ts-for-subtree ()
   "search timesamp in the current subtree, for example [2015-03-28 Sat 12:01], and parse it to date"
   (search-forward-regexp "[0-9]+-[0-9]+-[0-9]+")
   (beginning-of-line)
@@ -249,11 +249,11 @@ date: YYYY-MM-DD, for exmaple, 2015-12-01"
 
 (defun voca-builder/extract-by-periods-helper ()
   "it is created for FUN in org-map-entries does not take arguments"
-  (let* ((ts-sub-tree (org-get-ts-for-subtree))
+  (let* ((ts-sub-tree (voca-builder/org-get-ts-for-subtree))
 	 (p1 (time-less-p ts-sub-tree time2-internal))
 	 (p2 (time-less-p time1-internal ts-sub-tree)))
     (if (and p1 p2)
-	(org-write-subtree))
+	(voca-builder/org-write-subtree))
     )
   )
 

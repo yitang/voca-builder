@@ -110,7 +110,6 @@ if begining is non-nil, return the point at the begining of the tag, instead of 
 	 ;;       (message "nothing found")
 	 (point-max))))
 
-
 (defun voca-builder/html-remove-emphasis-tags (a-string)
   "remove emphasis tags"
   (with-temp-buffer
@@ -119,8 +118,7 @@ if begining is non-nil, return the point at the begining of the tag, instead of 
     (replace-string "<i>" "")
     (goto-char (point-min))
     (replace-string "</i>" "")
-    (buffer-string)
-    ))
+    (buffer-string)))
 
 (defun voca-builder/html-find-content-of-tags (tag1 tag2)
   "It searchs the content that is wrapped by tag1 and tag2 in a HTML file, and return as a UTF-8 stirng. "
@@ -128,10 +126,7 @@ if begining is non-nil, return the point at the begining of the tag, instead of 
 	 (p-tag2 (voca-builder/html-find-tag tag2 t))
 	 (content (buffer-substring p-tag1 p-tag2))
 	 (content-without-emphasis (voca-builder/html-remove-emphasis-tags content)))
-    (decode-coding-string content-without-emphasis 'utf-8)
-    )
-  )
-
+    (decode-coding-string content-without-emphasis 'utf-8)))
 
 (defun voca-builder/fetch-meaning (voca)
   "Parse the html content from www.vocabulary.com, and return the short and long meaning."
@@ -169,8 +164,7 @@ if begining is non-nil, return the point at the begining of the tag, instead of 
 				   "\n\n"
 				   (cdr meaning)))
 		  (org-entry (voca-builder/voca-org-entry voca string-meaning extra)))
-	     (append-to-file org-entry nil voca-builder/voca-file))
-	   ))))
+	     (append-to-file org-entry nil voca-builder/voca-file))))))
 
 (defun voca-builder/search-popup ()
   "search the word and shows the meaning in popup menu, may also save the notes"
@@ -189,9 +183,7 @@ if begining is non-nil, return the point at the begining of the tag, instead of 
       (popup-tip (mapconcat 'identity
 			    meaning
 			    "\n")
-		 :width voca-builder/popup-line-width))
-    )
-  )
+		 :width voca-builder/popup-line-width))))
 
 (defun voca-builder/search (this-voca)
   "search the word and shows the meaning in echo area, may also save the notes.
@@ -207,9 +199,7 @@ Back up function for voca-builder/search-popup."
 	(message "%s" (car meaning))
       (message "%s" (mapconcat 'identity
 			       meaning
-			       "\n"))
-      )
-    ))
+			       "\n")))))
 
 ;;;; section: export 
 (defun voca-builder/org-write-subtree ()
@@ -218,23 +208,21 @@ Back up function for voca-builder/search-popup."
   (let ((str (with-temp-buffer
 	       (org-paste-subtree)
 	       (buffer-string))))
-    (append-to-file str nil voca-builder/export-file))
-  )
+    (append-to-file str nil voca-builder/export-file)))
+
 
 (defun voca-builder/extract-by-tags (tags)
   "export all vocabulary records with tags"
   (interactive)
-  (org-map-entries 'voca-builder/org-write-subtree tags (list voca-builder/voca-file))
-  )
+  (org-map-entries 'voca-builder/org-write-subtree tags (list voca-builder/voca-file)))
+
 
 (defun voca-builder/org-get-ts-for-subtree ()
   "search timesamp in the current subtree, for example [2015-03-28 Sat 12:01], and parse it to date"
   (search-forward-regexp "[0-9]+-[0-9]+-[0-9]+")
   (beginning-of-line)
   (forward-char)
-  (voca-builder/encode-date (buffer-substring (point) (+ (point) 10)))
-  )
-
+  (voca-builder/encode-date (buffer-substring (point) (+ (point) 10))))
 
 (defun voca-builder/encode-date (date1)
   "encode date
@@ -243,9 +231,7 @@ date: YYYY-MM-DD, for exmaple, 2015-12-01"
     (encode-time 0 0 0
 		 (string-to-number (nth 2 date1-s))
 		 (string-to-number (nth 1 date1-s))
-		 (string-to-number (nth 0 date1-s)))
-    )
-  )
+		 (string-to-number (nth 0 date1-s)))))
 
 (defun voca-builder/extract-by-periods-helper ()
   "it is created for FUN in org-map-entries does not take arguments"
@@ -253,9 +239,7 @@ date: YYYY-MM-DD, for exmaple, 2015-12-01"
 	 (p1 (time-less-p ts-sub-tree time2-internal))
 	 (p2 (time-less-p time1-internal ts-sub-tree)))
     (if (and p1 p2)
-	(voca-builder/org-write-subtree))
-    )
-  )
+	(voca-builder/org-write-subtree))))
 
 (defun voca-builder/extract-period (p1 p2)
   "extract all vocabulary entries that are recorered between period p1 and p2.
@@ -263,8 +247,7 @@ period: YYYY-MM-DD, for exmaple, 2015-12-01"
   (interactive)
   (let ((time1-internal (voca-builder/encode-date p1))
 	(time2-internal (voca-builder/encode-date p2)))
-    (org-map-entries 'voca-builder/extract-by-periods-helper nil (list voca-builder/voca-file)))
-  )
+    (org-map-entries 'voca-builder/extract-by-periods-helper nil (list voca-builder/voca-file))))
 
 (provide 'voca-builder)
 

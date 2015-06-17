@@ -1,40 +1,159 @@
 * voca-builder 
+:PROPERTIES:
+:EXPORT_FILE_NAME: README.md
+:END:
+:LOGBOOK:
+CLOCK: [2015-06-17 Wed 10:40]--[2015-06-17 Wed 11:53] =>  1:13
+:END:
 
-voca-builder is an Emacs package that aimed to help you build up your vocabulary by automating the most step in the process, so that you actually spent time in learning new words. 
+voca-builder is an Emacs package that was developed to help you build
+up your vocabulary. It automates most of the steps in the process, so
+that you could 
+1. spent more time in actually memorising learning new
+   words leave the tedious origination tasks for voca-builder.
+2. focus on your reading with minimal distribution, I.e. switch app
+   and/or check direction.
+3. smart process that helps you memoerise the new vocabulary. 
 
-If you are learning a foreign language, you know how tedious and time-consuming it is to check a new word that you are not familiar with, it breaks you reading-flow, and therefore decrease your efficient. 
+If you are learning a foreign language, you know how tedious and
+time-consuming it is to check a new word that you are not familiar
+with. It breaks you reading-flow, and therefore decrease your
+efficient.
 
-voca-builder provides excellent functionality that will do the checking for you, and shows the meaning as a popup above the text that you are reading. It also records the meaning and the sentence containing the word. All you need to do is press a key. 
+vocab-builder provides excellent functionality that will do the
+checking for you, and shows the meaning as a popup above the text that
+you are reading. It also records the meaning and the sentence
+containing the word. All you need to do is press a key.
 
-It can also groups the vocabulary an later on, you can export new vocabularies based on tags or time period.  
+It can also groups the vocabulary an later on, you can export new
+vocabularies based on tags or time period.
 
 For full documentation on this package, please see the wiki page.
-* Demo
+* Installation 
+:PROPERTIES:
+:EXPORT_FILE_NAME: docs/install
+:END:
+[2015-06-17 Wed 10:41]
 
-#+begin_src emacs-lisp
-(require 'voca-builder)
-(setq voca-builder/voca-file "~/git/Learning/Emacs_Voca/voca_example.org") 
-(setq voca-builder/current-tag "Demo")
-(global-set-key (kbd "<f4>") 'voca-builder/search-popup)
+The recommended way to install voca-builder is via =package.el=, the build-in
+package manager in Emacs.
 
-(setq voca-builder/export-file "~/voca-builder-temp.org") 
-(voca-builder/extract-by-tags "Demo") 
-(voca-builder/extract-period "2015-01-05" "2015-04-01")
+voca-builder.el is available on the major community maintained
+repositories [[http://melpa.org/]]. You can install =voca-builder= with the
+following command:
+
+~M-x package-install [RET] voca-builder [RET]~
+
+or by execute this bit of Emacs Lisp code
+
+#+begin_src emacs-lisp :results silent 
+(unless (package-installed-p 'voca-builder)
+  (package-install 'voca-builder))
 #+end_src
 
-I moved the cursor to /c/ under /search/, and press F4, it shows the short meaning, which has been added to a file, as the echo area shows. 
-[[./img/Poup-show-.png]]
-Export all the vocabularies that are tagged by /Demo/
-[[./img/Export-Tag-Demo.png]]
-Export all the vocabularies that are recorded between "2015-01-05" and "2014-04-01"
-[[./img/Export-Tag-Demo-Period-Range.png]]
+If the installation doesn't work try to refresh the package list:
+
+~M-x package-refresh-contents [RET]~
+
+You can also install manually with two steps: first clone this
+repository, then add the directory containing voca-builder.el to
+Emacs's search path as follows:
+
+#+begin_src emacs-lisp :results silent 
+(add-to-list 'load-path "~/path/to/voca-builder.el/")
+(require 'voca-builder)
+#+end_src
+
+* Configuration 
+[2015-06-17 Wed 10:52]
+
+To see all the configurable settings in voca-builder, type 
+
+~M-x customize-group [RET] voca-builder [RET]~
+
+and you are able to customise these variables directly. However, the
+recommended way to do is to add the non-interaactive way. 
+
+The important variables are: 
+- voca-builder/voca-file :: where you wanna to save the new vocabulary
+     and their meanings to, the default is ~/.vocabulary
+- voca-builder/current-tag :: which tags should added to the
+     vocabulary nodes. The default is "GENE" (general). 
+- voca-builder/export-file :: where to save the exported vocabularies. 
+
+The following is a sample. 
+
+#+begin_src emacs-lisp
+(setq voca-builder/voca-file "~/git/Learning/Emacs_Voca/voca_example.org") 
+(setq voca-builder/current-tag "Demo")
+(setq voca-builder/export-file "~/voca-builder-temp.org")
+#+end_src
+
+I read all the time and frequently confront words that I am not
+familiar with, so I bind the keystroke ~F4~ to shows the meaning
+quickly. 
+
+#+begin_src emacs-lisp :results silent 
+(global-set-key (kbd "<f4>") 'voca-builder/search-popup)
+#+end_src
+
+
+
+* Usage 
+** Fetch the meaning 
+[2015-06-17 Wed 11:12]
+
+If I would like to know what the meaning of *search* means in English,
+I moved the cursor to /c/ under /search/, and press ~F4~. The meaning
+will popup up under the word, as shown below. I don't have to switch
+to a dictionary app and it won't break my read-flow. 
+
+[[./img/Poup-show-.png]] 
+
+Also, as the echo area shows, the full meaning and also the full
+sentence will be added to the voca-file. 
 
 Here is a real example when I was reading an article.
+
 [[./img/Popup-real-example.png]]
+
+** Export vocabularies by tags
+[2015-06-17 Wed 11:12]
+
+It is useful when you want to group vocabularies and revise
+them altogether, for example, all the biology terms. You can do it
+using =voca-builder/extract-by-tags= function. For example, 
+
+#+begin_src emacs-lisp :results silent 
+(voca-builder/extract-by-tags "Demo")
+#+end_src
+
+will export all the vocabularies that are tagged by "Demo" to
+~/voca-builder-temp.org. 
+
+[[./img/Export-Tag-Demo.png]] 
+
+** Export vocabularies by date 
+[2015-06-17 Wed 11:12]
+
+You may also want to export all the new vocbaulary you learnt during
+one particular period, like a semaster, an academic year using
+=voca-builder/extract-period= function. For example
+#+begin_src emacs-lisp :results silent 
+
+(voca-builder/extract-period "2015-01-05" "2015-04-01")
+#+end_src
+will export all the vocabularies that are recorded between "2015-01-05" and
+"2014-04-01". 
+
+[[./img/Export-Tag-Demo-Period-Range.png]]
+
+Note you can combine these two function together. 
 
 * It Make Your Life Easier 
 
-Image the process you want to look in a new word, it probably would like this: 
+Image the process you want to look in a new word, it probably would
+like this:
 1. put down the book you reading,
 2. find the dictionary or open the app, 
 3. repeat step 1-2 few times if the vocabulary is quit complex, 
@@ -55,20 +174,18 @@ sector, you can bring up all the banking related terminology, and
 study them all together, or you wanna strength your memmoery and wants
 to remmeber again before you forget, you can bring up all the words
 you learnt last week, or this month etc.
+
 * Human-Friendly Dictionary Database 
-take conciousness for example, definition from oxford is 
+take conciousness for example, definition from oxford is
 
 : [MASS NOUN] The state of being aware of and responsive to one’s surroundings:
 
-while for vocabuary.com, it has more human friendly defition, which are for human, and edited by humans. 
+while for vocabuary.com, it has more human friendly defition, which
+are for human, and edited by humans.
 
 : When you are awake and aware of your surroundings, that's consciousness. There are different types of consciousness, including social consciousness, being aware of injustices in society.
 
 : The early Latin word conscius meant "with knowing," but it meant a shared knowledge, a meaning that was retained through the 16th Century. John Locke was the first to describe consciousness in relation to the individual, referring to it as “the perception of what passes in a man’s own mind." If you lose consciousness during the performance, we'll wake you up with some smelling salts!
-* TODO TODO 
-1. Currently voca-builder only supports English dictionary (www.vocabulary.com) and will add other languages later.
-2. Write Documentation 
-
 
 
 

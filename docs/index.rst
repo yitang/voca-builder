@@ -33,3 +33,13 @@ It can also groups the vocabulary an later on, you can export new
 vocabularies based on tags or time period.
 
 For full documentation on this package, please see the wiki page.
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Documentation
+
+   welcome-to-vocabuilder 
+   installation 
+   configuration
+   usage
+   appendix

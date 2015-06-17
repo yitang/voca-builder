@@ -31,9 +31,9 @@ For full documentation on this package, please see the wiki page.
 .. toctree::
    :maxdepth: 2
    :caption: Documentation
-
-   welcome-to-vocabuilder 
-   installation 
+   
+   index
+   installation
    configuration
    usage
    appendix

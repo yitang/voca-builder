@@ -1,16 +1,10 @@
-Yi Tang
-=======
+Appendix
+========
 
-    :Author: Yi Tang
 
-.. contents::
-1 Appendix :ExportFile:
-----------
 
-[2015-06-17 Wed 15:38]
-
-1.1 It Make Your Life Easier
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+It Make Your Life Easier
+------------------------
 
 Image the process you want to look in a new word, it probably would
 like this:
@@ -42,8 +36,8 @@ study them all together, or you wanna strength your memmoery and wants
 to remmeber again before you forget, you can bring up all the words
 you learnt last week, or this month etc.
 
-1.2 Human-Friendly Dictionary Database
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Human-Friendly Dictionary Database
+----------------------------------
 
 take conciousness for example, definition from oxford is
 

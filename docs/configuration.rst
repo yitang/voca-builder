@@ -1,13 +1,7 @@
-Yi Tang
-=======
+Configuration
+=============
 
-    :Author: Yi Tang
 
-.. contents::
-1 Configuration :ExportFile:
----------------
-
-[2015-06-17 Wed 10:52]
 
 To see all the configurable settings in voca-builder, type 
 

@@ -1,16 +1,10 @@
-Yi Tang
-=======
+Usage
+=====
 
-    :Author: Yi Tang
+Fetch the meaning
+-----------------
 
-.. contents::
-1 Usage :ExportFile:
--------
 
-1.1 Fetch the meaning
-~~~~~~~~~~~~~~~~~~~~~
-
-[2015-06-17 Wed 11:12]
 
 If I would like to know what the meaning of **search** means in English,
 I moved the cursor to *c* under *search*, and press ``F4``. The meaning
@@ -26,10 +20,10 @@ Here is a real example when I was reading an article.
 
 .. image:: ./img/Popup-real-example.png
 
-1.2 Export vocabularies by tags
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Export vocabularies by tags
+---------------------------
 
-[2015-06-17 Wed 11:12]
+
 
 It is useful when you want to group vocabularies and revise
 them altogether, for example, all the biology terms. You can do it
@@ -44,10 +38,10 @@ will export all the vocabularies that are tagged by "Demo" to
 
 .. image:: ./img/Export-Tag-Demo.png
 
-1.3 Export vocabularies by date
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Export vocabularies by date
+---------------------------
 
-[2015-06-17 Wed 11:12]
+
 
 You may also want to export all the new vocbaulary you learnt during
 one particular period, like a semaster, an academic year using

@@ -1,13 +1,7 @@
-Yi Tang
-=======
+Installation
+============
 
-    :Author: Yi Tang
 
-.. contents::
-1 Installation :ExportFile:
---------------
-
-[2015-06-17 Wed 10:41]
 
 The recommended way to install voca-builder is via ``package.el``, the build-in
 package manager in Emacs.

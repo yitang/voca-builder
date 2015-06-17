@@ -1,11 +1,5 @@
-Yi Tang
-=======
-
-    :Author: Yi Tang
-
-.. contents::
-1 Welcome to voca-builder :ExportFile:
--------------------------
+Welcome to voca-builder
+=======================
 
 voca-builder is an Emacs package that was developed to help you build
 up your vocabulary. It automates most of the steps in the process, so
@@ -33,13 +27,3 @@ It can also groups the vocabulary an later on, you can export new
 vocabularies based on tags or time period.
 
 For full documentation on this package, please see the wiki page.
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Documentation
-
-   welcome-to-vocabuilder 
-   installation 
-   configuration
-   usage
-   appendix

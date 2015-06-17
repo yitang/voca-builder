@@ -23,14 +23,14 @@ For full documentation on this package, please see the wiki page.
 #+end_src
 
 I moved the cursor to /c/ under /search/, and press F4, it shows the short meaning, which has been added to a file, as the echo area shows. 
-[[img/Poup-show-.png]]
+[[./img/Poup-show-.png]]
 Export all the vocabularies that are tagged by /Demo/
-[[img/Export-Tag-Demo.png]]
+[[./img/Export-Tag-Demo.png]]
 Export all the vocabularies that are recorded between "2015-01-05" and "2014-04-01"
-[[img/Export-Tag-Demo-Period-Range.png]]
+[[./img/Export-Tag-Demo-Period-Range.png]]
 
 Here is a real example when I was reading an article.
-[[img/Popup-real-example.png]]
+[[./img/Popup-real-example.png]]
 
 * It Make Your Life Easier 
 

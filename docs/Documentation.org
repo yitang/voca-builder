@@ -14,6 +14,7 @@ CLOCK: [2015-06-17 Wed 17:10]--[2015-06-17 Wed 17:11] =>  0:01
   folder changes of this documents. 
 - [X] copy img folder to docs/img
 
+
 * Welcome to voca-builder					 :ExportFile:
 :PROPERTIES:
 :EXPORT_FILE_NAME: index
@@ -245,3 +246,62 @@ are for human, and edited by humans.
    configuration
    usage
    appendix
+* workflow
+  [2015-06-17 Wed 21:45]
+#+begin_src emacs-lisp :results silent 
+;; workflow for org --> rst for spnix
+;; dependes on jekyll-make-slug 
+
+;; set export file name to heading
+(defun yt/org-header-as-filename ()
+  (interactive)
+  (let* ((header (nth 4 (org-heading-components)))
+         (filename (jekyll-make-slug header)))
+    (if (and (string-match-p "welcome" filename)
+             (string-match-p "to" filename))
+        (org-set-property "EXPORT_FILE_NAME" "index")
+      (org-set-property "EXPORT_FILE_NAME" filename)))
+  (org-toggle-tag "ExportFile" 'on))
+
+;;
+(defun yt/org-export-this-header ()
+  (let* ((export-file-name (org-entry-get (point) "EXPORT_FILE_NAME"))
+         (header (nth 4 (org-heading-components)))
+         (output-file (concat default-directory  export-file-name ".rst")))
+    (when export-file-name ;; if it has no EXPORT_FILE_NAME property, skip 
+      (org-copy-subtree)
+      ;; (message export-file-name)
+      (with-temp-buffer 
+        (org-yank)
+        (goto-char (point-min))
+        ;; (kill-line 1)
+        ;; (insert (concat "#+TITLE: " header "\n"))
+        (org-export-to-file 'rst (concat output-file) nil t)
+        (when (and (string-match-p "welcome" header)
+                   (string-match-p "to" header))
+          (let ((output-file (concat default-directory "README.org")))
+            ;; (insert (concat "# " header "\n"))
+            (org-export-to-file 'org output-file nil nil)
+            (shell-command (concat "mv " output-file " ..")) ;; TODO: simply this line
+            )
+          )))))
+
+        
+))
+
+
+;; ;;
+;; (defun yt/org-export-this-header ()
+;;   (let* ((export-file-name (org-entry-get (point) "EXPORT_FILE_NAME"))
+;;          (header (nth 4 (org-heading-components)))
+;;          (output-file (concat default-directory  export-file-name ".rst")))
+;;     (when export-file-name ;; if it has no EXPORT_FILE_NAME property, skip 
+;;       (org-copy-subtree)
+;;       (message export-file-name)
+;;       (with-temp-buffer 
+;;         (org-yank)
+;;         (goto-char (point-min))
+;;         (kill-line 1)
+;;         (insert (concat "#+TITLE: " header "\n"))
+;;         (org-export-to-file 'rst (concat output-file))))))
+#+end_src

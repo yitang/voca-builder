@@ -1,3 +1,6 @@
+.. homepage
+
+   
 Welcome to voca-builder
 =======================
 

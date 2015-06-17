@@ -1,8 +1,4 @@
-* Welcome to voca-builder					 :ExportFile:
-:PROPERTIES:
-:EXPORT_FILE_NAME: index
-:END:      
-
+* Welcome to voca-builder                                        :ExportFile:
 voca-builder is an Emacs package that was developed to help you build
 up your vocabulary. It automates most of the steps in the process, so
 that you could 
@@ -10,7 +6,7 @@ that you could
    words leave the tedious origination tasks for voca-builder.
 2. focus on your reading with minimal distribution, I.e. switch app
    and/or check direction.
-3. smart process that helps you memoerise the new vocabulary. 
+3. smart process that helps you memoerise the new vocabulary.
 
 If you are learning a foreign language, you know how tedious and
 time-consuming it is to check a new word that you are not familiar

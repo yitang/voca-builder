@@ -32,7 +32,6 @@ For full documentation on this package, please see the wiki page.
    :maxdepth: 2
    :caption: Documentation
    
-   index
    installation
    configuration
    usage

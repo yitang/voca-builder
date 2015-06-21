@@ -141,8 +141,9 @@ if begining is non-nil, return the point at the begining of the tag, instead of 
 			    short-meaning))	   
 	   (long-meaning (voca-builder/html-find-content-of-tags "<p class=\"long\">"
 								 "</p>"))
-	   	   (long-meaning (if (eq 0 (length long-meaning)) ;; if it has no long meanings 
-			     "nil") ))
+	   (long-meaning (if (eq 0 (length long-meaning)) ;; if it has no long meanings 
+			     "nil"
+			   long-meaning)))
       (if (string-match-p "Try the world&#039;s fastest, smartest dictionary:" short-meaning)
 	  (cons "No meaning found"
 		"No meaning found")

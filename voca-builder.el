@@ -155,8 +155,12 @@ if begining is non-nil, return the point at the begining of the tag, instead of 
   (let ((ts (if voca-builder/record-with-ts
 		(format-time-string "[%Y-%m-%d %a %H:%M]")))
 	(tag (if voca-builder/current-tag
-		 (concat ":" voca-builder/current-tag ":"))))
-    (concat "\n* " voca " " tag "\n" ts "\n\n" exp "\n\n" extra)))
+		 (concat ":" voca-builder/current-tag ":")))
+	(exp-filled (with-temp-buffer
+		      (insert exp)
+		      (fill-region (point-min) (point-max))
+		      (buffer-string))))
+    (concat "\n* " voca " " tag "\n" ts "\n\n" exp-filled "\n\n" extra)))
 
 (defun voca-builder/record-voca (voca meaning extra)
   "save the vocabulary notes to file."

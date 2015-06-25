@@ -1,4 +1,4 @@
-;;; voca-builder.el --- Helps you build up your vocabulary
+;;;; * voca-builder.el --- Helps you build up your vocabulary
 ;;
 ;; Copyright (C) 2015 Yi Tang
 ;;
@@ -22,7 +22,7 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;
-;;; Commentary:
+;;; * Commentary:
 ;;
 ;; voca-builder is an Emacs package that aimed to help you build up your
 ;; vocabulary by automating the most step in the process, so that you
@@ -52,7 +52,7 @@
 
 (require 'org)
 (require 'popup)
-
+;;;; * Variables 
 (defgroup voca-builder nil
   "Group voca-builder entries according to their version control status."
   :prefix "voca-builder-"
@@ -95,7 +95,7 @@ The timestamps are needed for export function"
   :type 'integer
   :group 'voca-builder)
 
-;;;; section: functions 
+;;;; * Functions 
 (defun voca-builder/make-url (voca)
   (concat "http://www.vocabulary.com/dictionary/" voca))
 
@@ -202,13 +202,13 @@ Back up function for voca-builder/search-popup."
 	(voca-builder/record-voca this-voca
 				  meaning
 				  this-sentence))
-    (if voca-builder/popup-show-short-meaning
+(if voca-builder/popup-show-short-meaning
 	(message "%s" (car meaning))
       (message "%s" (mapconcat 'identity
 			       meaning
 			       "\n")))))
 
-;;;; section: export 
+;;;; * Export 
 (defun voca-builder/org-write-subtree ()
   "append current subtree to the voca-builder/export-file"
   (org-copy-subtree)
@@ -258,7 +258,7 @@ period: YYYY-MM-DD, for exmaple, 2015-12-01"
 
 (provide 'voca-builder)
 
-;;;; section: test 
+;;;; * Test
 ;; (setq voca-builder/voca-file "~/vocabulary.org")
 ;; (setq voca-builder/current-tag "Demo")
 ;; (global-set-key (kbd "<f4>") 'voca-builder/search-popup)

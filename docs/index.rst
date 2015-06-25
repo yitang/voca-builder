@@ -24,7 +24,6 @@ definitely should give it a try.
    :maxdepth: 2
    :caption: Documentation
    
-   index
    introduction--why-use-vocabuilder
    installation
    configuration

@@ -3,11 +3,16 @@ Installation
 
 
 
+Package Manager in Emacs
+------------------------
+
+
+
 The recommended way to install voca-builder is via ``package.el``, the build-in
 package manager in Emacs.
 
 voca-builder.el is available on the major community maintained
-repositories `http://melpa.org/ <http://melpa.org/>`_. You can install ``voca-builder`` with the
+repository `http://melpa.org/ <http://melpa.org/>`_. You can install ``voca-builder`` with the
 following command:
 
 ``M-x package-install [RET] voca-builder [RET]``
@@ -23,9 +28,21 @@ If the installation doesn't work try to refresh the package list:
 
 ``M-x package-refresh-contents [RET]``
 
+Install Manually
+----------------
+
+
+
 You can also install manually with two steps: first clone this
-repository, then add the directory containing voca-builder.el to
+repository, 
+
+.. code-block:: sh
+
+    git clone https://github.com/yitang/voca-builder.git
+
+then add the directory containing voca-builder.el to
 Emacs's search path as follows:
+
 
 .. code-block:: scheme
 

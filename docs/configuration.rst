@@ -8,7 +8,7 @@ To see all the configurable settings in voca-builder, type
 ``M-x customize-group [RET] voca-builder [RET]``
 
 and you are able to customise these variables directly. However, the
-recommended way to do is to add the non-interaactive way. 
+recommended way to do is to add the non-interactive way. 
 
 The important variables are: 
 

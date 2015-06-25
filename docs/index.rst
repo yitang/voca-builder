@@ -1,41 +1,32 @@
-.. homepage
-
-   
 Welcome to voca-builder
 =======================
 
 voca-builder is an Emacs package that was developed to help you build
-up your vocabulary. It automates most of the steps in the process, so
-that you could 
+up your vocabulary. It automates most of the steps in the look-up and
+record processes, and therefore improve your efficiency and
+productivity. 
 
-1. spent more time in actually memorising learning new
-   words leave the tedious origination tasks for voca-builder.
+By using it, you can
 
-2. focus on your reading with minimal distribution, I.e. switch app
-   and/or check direction.
+1. spent more time in actually learning and memorising new
+   words, and leave the manual and origination tasks to voca-builder.
 
-3. smart process that helps you memoerise the new vocabulary.
+2. focus on your reading with minimal distribution without switching
+   app to check dictionary.
 
-If you are learning a foreign language, you know how tedious and
-time-consuming it is to check a new word that you are not familiar
-with. It breaks you reading-flow, and therefore decrease your
-efficient.
+3. utilise the smart exporting facility to helps you revise the new
+   vocabulary.
 
-vocab-builder provides excellent functionality that will do the
-checking for you, and shows the meaning as a popup above the text that
-you are reading. It also records the meaning and the sentence
-containing the word. All you need to do is press a key.
-
-It can also groups the vocabulary an later on, you can export new
-vocabularies based on tags or time period.
-
-For full documentation on this package, please see the wiki page.
+If you are Emacs user and trying to build up your vocabulary, you
+definitely should give it a try. 
 
 .. toctree::
    :maxdepth: 2
    :caption: Documentation
    
+   index
+   introduction--why-use-vocabuilder
    installation
    configuration
    usage
-   appendix
+   development

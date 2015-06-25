@@ -20,8 +20,8 @@ Here is a real example when I was reading an article.
 
 .. image:: ./img/Popup-real-example.png
 
-Export vocabularies by tags
----------------------------
+Export by tags
+--------------
 
 
 
@@ -38,8 +38,8 @@ will export all the vocabularies that are tagged by "Demo" to
 
 .. image:: ./img/Export-Tag-Demo.png
 
-Export vocabularies by date
----------------------------
+Export by date
+--------------
 
 
 

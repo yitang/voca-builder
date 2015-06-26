@@ -1,5 +1,4 @@
-[![Documentation Status](https://readthedocs.org/projects/voca-builder/badge/?version=latest)](https://readthedocs.org/projects/voca-builder/?badge=latest)
-  
+[![Documentation Status](<https://readthedocs.org/projects/voca-builder/badge/?version=latest>)](http://voca-builder.readthedocs.org/en/latest/)
 # Welcome to voca-builder
 
 voca-builder is an Emacs package that was developed to help you build

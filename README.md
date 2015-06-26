@@ -1,6 +1,6 @@
 [![Documentation Status](https://readthedocs.org/projects/voca-builder/badge/?version=latest)](https://readthedocs.org/projects/voca-builder/?badge=latest)
   
-# Welcome to voca-builder     :HOME:ExportFile:
+# Welcome to voca-builder
 
 voca-builder is an Emacs package that was developed to help you build
 up your vocabulary. It automates most of the steps in the look-up and

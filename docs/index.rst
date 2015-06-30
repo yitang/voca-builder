@@ -20,6 +20,7 @@ By using it, you can
 If you are Emacs user and trying to build up your vocabulary, you
 definitely should give it a try. 
 
+
 .. toctree::
    :maxdepth: 2
    :caption: Documentation

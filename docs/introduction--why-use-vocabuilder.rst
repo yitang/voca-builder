@@ -1,8 +1,8 @@
 Introduction - Why use voca-builder
 ===================================
 
-Hand-off But Lose Nothing
--------------------------
+Feel Free to Handoff
+--------------------
 
 
 
@@ -42,8 +42,8 @@ therefore stay focus on.
 
 .. image:: img/Popup-real-example.png
 
-Helps You To Revise
--------------------
+Help To Revise
+--------------
 
 
 

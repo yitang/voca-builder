@@ -12,26 +12,32 @@ therefore it is an open software. The source code can be found at the
 I intent to update it regularly to account for its dependence's
 upgrading, and also to provides more features. But I am not an Emacs
 Lisp expert and I am actively seek collaboration. Any contribution to
-this package in terms of code or suggestion will be highly
+this package in terms of suggestion or implementation will be highly
 appreciated.
 
 My current development plan:
 
-First Release - 0.1.0 - 2015-04-05
-----------------------------------
+First Release
+-------------
 
 
 
 The first release of voca-builder has built a platform that user can
 look-up and records with new vocabularies. 
 
-Second Release - 0.2.0 - (now)
-------------------------------
+Second Release (now)
+--------------------
 
-Third Release - 0.3.0 -
------------------------
 
-[2015-06-25 Thu 19:26]
+
+Clean up the code base and complete the first set of documentations so
+that it would be easier for others to take on
+
+Third Release
+-------------
+
+
+
 The second release of voca-builder should focus on helping user to
 memorise the vocabulary.
 
@@ -53,8 +59,8 @@ Flash Card
 To help user to revise the new vocabulary by using flash card to
 stimulate one's memory.
 
-Fourth Release - 0.4.0
-----------------------
+Fourth Release
+--------------
 
 
 

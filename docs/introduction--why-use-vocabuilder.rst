@@ -8,26 +8,27 @@ Feel Free to Handoff
 
 If you are learning a foreign language, you know how tedious and
 time-consuming it is to check a new word that you are not familiar
-with. The full process of look-into and records can take up to 7
+with. The full process of lookup and recording can take up to 6
 steps:
 
-1. put down the book you reading,
+1. stop reading if you are not familiar with the word but you know it
+   is really important,
 
-2. find the dictionary or open the app,
+2. fetch a dictionary or a gadget,
 
-3. repeat step 1-2 few times if the vocabulary is quit complex,
+3. look for the word,
 
-4. now you get the meaning, trying to comprehensive it,
+4. try to comprehensive it,
 
-5. then you write it down in a note book, with the meaning,
+5. then you write it down in your vocabulary book, with the meaning,
 
-6. if you are very serious, you probably write down the sentence as an example,
+6. if you are very serious, you probably write down the sentence as an
+   example.
 
-7. after all these, you go back to continue reading but lost the flow.
 
-What if you can do the step 1-6 automatically, and immediately as you
-thought you wanna see what's the meaning of a word? This is what
-voca-bulder can do for you, all you need to do is press F4.
+After all these, you go back to continue reading but lost the flow.
+voca-builder can do all the tasks, except from 4, for you without your
+involvement, all you need to do is press F4 key or any other you prefer.
 
 Stay Focused in Reading
 -----------------------
@@ -76,8 +77,9 @@ Enjoy Human-Friendly Dictionary
 Most of the dictionaries are boring. Take consciousness for example,
 definition from Oxford Dictionary is
 
-``[MASS NOUN] The state of being aware of and responsive to one’s surroundings:
-``
+::
+
+    [MASS NOUN] The state of being aware of and responsive to one’s surroundings
 
 The excellent educators in vocabulary.com makes it fun! For
 consciousness, it has short and long meanings, as shown below.

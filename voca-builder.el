@@ -1,4 +1,4 @@
-;;;; * voca-builder.el --- Helps you build up your vocabulary
+;;; voca-builder.el --- Helps you build up your vocabulary
 ;;
 ;; Copyright (C) 2015 Yi Tang
 ;;
